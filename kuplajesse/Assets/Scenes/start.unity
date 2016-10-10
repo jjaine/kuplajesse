@@ -101,6 +101,7 @@ GameObject:
   - 212: {fileID: 267012907}
   - 50: {fileID: 267012909}
   - 61: {fileID: 267012910}
+  - 114: {fileID: 267012911}
   m_Layer: 0
   m_Name: Jesse
   m_TagString: Player
@@ -185,6 +186,22 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.8055556, y: 1.5555556}
+--- !u!114 &267012911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 267012906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1153a1e69a199c94a8d567dd4b385a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  facing: 1
+  jumpForce: 400
+  moveForce: 30
+  maxSpeed: 2
 --- !u!1 &1008115189
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +211,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1008115191}
   - 212: {fileID: 1008115190}
+  - 61: {fileID: 1008115192}
   m_Layer: 0
   m_Name: platform (1)
   m_TagString: platform
@@ -247,6 +265,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!61 &1008115192
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008115189}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.5555556, y: 0.5555556}
 --- !u!1 &1327413065
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +288,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1327413067}
   - 212: {fileID: 1327413066}
+  - 61: {fileID: 1327413068}
   m_Layer: 0
   m_Name: platform
   m_TagString: platform
@@ -309,6 +342,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!61 &1327413068
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1327413065}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.5555556, y: 0.5555556}
 --- !u!1 &1995479310
 GameObject:
   m_ObjectHideFlags: 0
