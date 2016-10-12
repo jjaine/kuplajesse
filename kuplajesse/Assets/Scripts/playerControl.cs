@@ -25,6 +25,9 @@ public class playerControl : MonoBehaviour {
 
     void FixedUpdate ()
     {
+        if (GetComponent<Rigidbody2D>().position.y < -6)
+            GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
+
         float h = Input.GetAxis("Horizontal");
 
         if (h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
