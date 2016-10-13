@@ -20,12 +20,14 @@ public class platformOneWay : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        oneWay = true;
+		if (other.tag == "Player")
+			oneWay = true;
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        oneWay = true;
+		if (other.tag == "Player")
+			oneWay = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
