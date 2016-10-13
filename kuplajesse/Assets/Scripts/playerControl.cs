@@ -36,10 +36,10 @@ public class playerControl : MonoBehaviour {
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= maxSpeed)
             GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
-        if (h > 0 && !facing) ;
-        // implement later Flip();
-        else if (h < 0 && facing) ;
-        // implement later Flip();
+        if (h > 0 && !facing) 
+            Flip();
+        else if (h < 0 && facing) 
+            Flip();
 
         if (jump)
         {
@@ -47,4 +47,16 @@ public class playerControl : MonoBehaviour {
             jump = false;
         }
     }
+
+    void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        facing = !facing;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
 }
