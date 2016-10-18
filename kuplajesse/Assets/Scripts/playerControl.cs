@@ -11,11 +11,12 @@ public class playerControl : MonoBehaviour {
     public float jumpForce = 500f;
     public float moveForce = 200f;
     public float maxSpeed = 3f;
+	public AudioSource audio;
 
     // Use this for initialization
     void Start () {
-
-    }
+		audio = GetComponent<AudioSource>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,7 +44,8 @@ public class playerControl : MonoBehaviour {
 
         if (jump)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
+			audio.Play ();
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
     }
