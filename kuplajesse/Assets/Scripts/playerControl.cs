@@ -28,6 +28,8 @@ public class playerControl : MonoBehaviour {
 
     void FixedUpdate ()
     {
+		Physics2D.IgnoreLayerCollision (8, 10, GetComponent<Rigidbody2D> ().velocity.y > 0);
+
         if (GetComponent<Rigidbody2D>().position.y < -6)
             GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
 
