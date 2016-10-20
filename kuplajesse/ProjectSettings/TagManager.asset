@@ -8,6 +8,7 @@ TagManager:
   - platform
   - obstacle
   - enemy
+  - bg
   layers:
   - Default
   - TransparentFX
@@ -42,11 +43,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 2203181763
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: World
     uniqueID: 3571428735
