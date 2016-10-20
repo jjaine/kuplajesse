@@ -29,13 +29,6 @@ public class Enemy : MonoBehaviour
 				Flip ();
 				flip = true;
 		}
-			
-		if (collider.tag == "platform") { 
-			if (contactPoint.y > (center.y - 0.27) && contactPoint.y < (center.y + 0.27)) {
-				Flip ();
-				flip = true;
-			}
-		}
 	}
 		
 	void FixedUpdate ()
