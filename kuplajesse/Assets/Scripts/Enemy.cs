@@ -4,7 +4,8 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
 	public float speed = 2f;		
-	public int HP = 1;					
+	public int HP = 1;		
+	public GameObject player;
 
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
 	private Transform front;			// Reference to the position of the gameobject used for checking if something is in front.
