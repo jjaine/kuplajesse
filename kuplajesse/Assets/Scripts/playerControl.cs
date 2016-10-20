@@ -6,6 +6,9 @@ public class playerControl : MonoBehaviour {
     public bool jump = false;
     public bool facing = true; // use later for setting the player character to correct direction
 	public Vector3 originalPosition;
+	float GroundDistance;
+	bool grounded = true;
+
 
     //forces for moving
     public float jumpForce = 500f;
@@ -19,12 +22,16 @@ public class playerControl : MonoBehaviour {
 		audio = GetComponent<AudioSource>();
 		originalPosition = gameObject.transform.position;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
-            jump = true;
-    }
+		Debug.Log (grounded);
+		if (grounded && Input.GetButtonDown ("Jump")) {
+			audio.Play ();
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
+			grounded = false;
+		}    
+	}
 
     void FixedUpdate ()
     {
@@ -34,6 +41,7 @@ public class playerControl : MonoBehaviour {
             GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
 
         float h = Input.GetAxis("Horizontal");
+
 
 		if (h * GetComponent<Rigidbody2D> ().velocity.x < maxSpeed){
 			if (GetComponent<Rigidbody2D> ().velocity.y == 0)
@@ -50,12 +58,6 @@ public class playerControl : MonoBehaviour {
         else if (h < 0 && facing) 
             Flip();
 
-        if (jump)
-        {
-			audio.Play ();
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
-            jump = false;
-        }
 
     }
 
@@ -70,9 +72,12 @@ public class playerControl : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-	//kill player on enemy contact
+	//kill player on enemy contact, check if grounded 
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		if(GetComponent<Rigidbody2D>().velocity.y == 0)
+			grounded = true;
 		Collider2D collider = col.collider;
 		Vector3 contactPoint = col.contacts[0].point;
 		Vector3 center = collider.bounds.center;
@@ -81,5 +86,6 @@ public class playerControl : MonoBehaviour {
 			gameObject.transform.position = originalPosition;
 		}
 	}
+
 
 }
