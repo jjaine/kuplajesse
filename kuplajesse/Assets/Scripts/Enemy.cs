@@ -31,9 +31,7 @@ public class Enemy : MonoBehaviour
 		}
 			
 		if (collider.tag == "platform") { 
-			Debug.Log ("cpy: " + contactPoint.y + " cy: " + center.y);
 			if (contactPoint.y > (center.y - 0.27) && contactPoint.y < (center.y + 0.27)) {
-				Debug.Log ("FLIIIIP");
 				Flip ();
 				flip = true;
 			}
@@ -51,7 +49,10 @@ public class Enemy : MonoBehaviour
 			flip = false;
 		}
 		if(GetComponent<Rigidbody2D> ().velocity.y == 0)
-		GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * speed, GetComponent<Rigidbody2D>().velocity.y);	
+			GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * speed, GetComponent<Rigidbody2D>().velocity.y);	
+		else
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+
 		// kill
 		//if(HP <= 0 && !dead)
 		//	Death ();
