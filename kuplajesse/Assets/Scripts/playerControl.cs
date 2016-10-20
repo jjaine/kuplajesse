@@ -6,8 +6,11 @@ public class playerControl : MonoBehaviour {
     public bool jump = false;
     public bool facing = true; // use later for setting the player character to correct direction
 	public Vector3 originalPosition;
-	float GroundDistance;
-	bool grounded = true;
+	public float GroundDistance;
+	public bool grounded = true;
+	public bool killed = false;
+	public float killTime = 3f;
+	float killTimeRemaining;
 
 
     //forces for moving
@@ -21,21 +24,29 @@ public class playerControl : MonoBehaviour {
     void Start () {
 		audio = GetComponent<AudioSource>();
 		originalPosition = gameObject.transform.position;
+		killTimeRemaining = killTime;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (grounded);
 		if (grounded && Input.GetButtonDown ("Jump")) {
 			audio.Play ();
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
 			grounded = false;
 		}    
+		if (killed && killTimeRemaining > 0)
+			killTimeRemaining -= Time.deltaTime;
+		else {
+			killTimeRemaining = killTime;
+			killed = false;
+		}
 	}
 
     void FixedUpdate ()
     {
 		Physics2D.IgnoreLayerCollision (8, 10, GetComponent<Rigidbody2D> ().velocity.y > 0);
+		Physics2D.IgnoreLayerCollision (8, 9, killed);
+
 
         if (GetComponent<Rigidbody2D>().position.y < -6)
             GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
@@ -83,6 +94,7 @@ public class playerControl : MonoBehaviour {
 		Vector3 center = collider.bounds.center;
 
 		if (collider.tag == "enemy") { 
+			killed = true;
 			gameObject.transform.position = originalPosition;
 		}
 	}
