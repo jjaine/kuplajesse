@@ -90,8 +90,6 @@ public class playerControl : MonoBehaviour {
 		if(GetComponent<Rigidbody2D>().velocity.y == 0)
 			grounded = true;
 		Collider2D collider = col.collider;
-		Vector3 contactPoint = col.contacts[0].point;
-		Vector3 center = collider.bounds.center;
 
 		if (collider.tag == "enemy") { 
 			killed = true;
