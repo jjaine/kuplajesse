@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
 	{
 		ren = gameObject.GetComponent<SpriteRenderer> ();
 //		front = transform.Find("frontCheck").transform;
+		Physics2D.IgnoreCollision(bubble.GetComponent<Collider2D>(), GetComponent<Collider2D>(), bubble.tag=="nobubble");
 		random = (int)Random.Range(0.0f, 1.9f);
-		Debug.Log (random);
 		if (random == 1)
 			Flip ();
 	}
@@ -53,6 +53,8 @@ public class Enemy : MonoBehaviour
 
 			if (GetComponent<Rigidbody2D> ().position.y < -6)
 				GetComponent<Rigidbody2D> ().gameObject.transform.position = new Vector2 (GetComponent<Rigidbody2D> ().position.x, 6);
+			if (GetComponent<Rigidbody2D> ().position.x < -8.6f)
+				GetComponent<Rigidbody2D> ().gameObject.transform.position = new Vector2 (0, 6);
 
 			if (!dead && grounded && GetComponent<Rigidbody2D> ().position.y < player.transform.position.y &&
 			   (GetComponent<Rigidbody2D> ().position.x - player.transform.position.x < 0.05f && GetComponent<Rigidbody2D> ().position.x - player.transform.position.x > -0.05f)) {

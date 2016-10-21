@@ -2502,7 +2502,6 @@ GameObject:
   - 4: {fileID: 1659644040}
   - 212: {fileID: 1659644039}
   - 61: {fileID: 1659644038}
-  - 251: {fileID: 1659644041}
   m_Layer: 10
   m_Name: SPR_Wall_L (1)
   m_TagString: obstacle
@@ -2570,23 +2569,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!251 &1659644041
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1659644037}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 1
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1663504716
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,15 @@ public class DeadEnemyController : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		if (GetComponent<Rigidbody2D> ().position.y > 3)
+		if (GetComponent<Rigidbody2D> ().position.y > 3.5f)
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-		
-			
+	}
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		Collider2D collider = col.collider;
+
+		if (collider.tag == "Player") {
+			Destroy (gameObject);
+		}
 	}
 }

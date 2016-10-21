@@ -11,6 +11,7 @@ TagManager:
   - bg
   - bubble
   - deadenemy
+  - nobubble
   layers:
   - Default
   - TransparentFX
