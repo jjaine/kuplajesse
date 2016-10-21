@@ -6,6 +6,9 @@ public class Enemy : MonoBehaviour
 	public float speed = 2f;		
 	public int HP = 1;		
 	public GameObject player;
+	public GameObject bubble;
+	public GameObject deadEnemy1;
+	public GameObject deadEnemy2;
 	public bool grounded = true;
 
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
@@ -13,13 +16,17 @@ public class Enemy : MonoBehaviour
 	private bool dead = false;			// Whether or not the enemy is dead.
 	private bool flip = false;
 	private bool collide = false;
-
+	private int random;
 
 
 	void Awake()
 	{
-		ren = gameObject.GetComponent<SpriteRenderer>();
+		ren = gameObject.GetComponent<SpriteRenderer> ();
 //		front = transform.Find("frontCheck").transform;
+		random = (int)Random.Range(0.0f, 1.9f);
+		Debug.Log (random);
+		if (random == 1)
+			Flip ();
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -30,6 +37,10 @@ public class Enemy : MonoBehaviour
 				Flip ();
 				flip = true;
 		}
+		if (collider.tag == "bubble") {
+			dead = true;
+		}
+
 		if(GetComponent<Rigidbody2D>().velocity.y == 0)
 			grounded = true;
 	}
@@ -40,41 +51,50 @@ public class Enemy : MonoBehaviour
 		Physics2D.IgnoreLayerCollision (9, 10, GetComponent<Rigidbody2D> ().velocity.y > 0);
 
 
-		if (GetComponent<Rigidbody2D>().position.y < -6)
-			GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
+			if (GetComponent<Rigidbody2D> ().position.y < -6)
+				GetComponent<Rigidbody2D> ().gameObject.transform.position = new Vector2 (GetComponent<Rigidbody2D> ().position.x, 6);
 
-		if (grounded && GetComponent<Rigidbody2D> ().position.y < player.transform.position.y &&
-		   (GetComponent<Rigidbody2D> ().position.x - player.transform.position.x < 0.05f && GetComponent<Rigidbody2D> ().position.x - player.transform.position.x > -0.05f)) {
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, 375f));
-			grounded = false;
-		}
+			if (!dead && grounded && GetComponent<Rigidbody2D> ().position.y < player.transform.position.y &&
+			   (GetComponent<Rigidbody2D> ().position.x - player.transform.position.x < 0.05f && GetComponent<Rigidbody2D> ().position.x - player.transform.position.x > -0.05f)) {
+				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, 375f));
+				grounded = false;
+			}
 		
 
-		// move
-		if (flip) {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D>().velocity.y);	
-			flip = false;
+			// move
+			if (flip) {
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D> ().velocity.y);	
+				flip = false;
+			}
+
+			if (!dead && GetComponent<Rigidbody2D> ().velocity.y == 0)
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (transform.localScale.x * speed, GetComponent<Rigidbody2D> ().velocity.y);
+			else
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D> ().velocity.y);
+
+			// kill
+			if (dead)
+				Death ();
 		}
-
-		if(GetComponent<Rigidbody2D> ().velocity.y == 0)
-			GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * speed, GetComponent<Rigidbody2D>().velocity.y);	
-		else
-			GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-
-		// kill
-		//if(HP <= 0 && !dead)
-		//	Death ();
-	}
 		
 
 	void Death()
 	{
-		//change sprite to dead, later
-		//ren.enabled = true;
-		//ren.sprite = deadEnemy;
+		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), bubble.GetComponent<Collider2D>());
+		//gameObject.transform.position = new Vector3(0,0,0);
 
+		//change sprite to dead, later
+		ren.enabled = true;
+		Destroy (gameObject);
+
+		if (ren.name == "blob" || ren.name == "blob2") {
+			GameObject deadEnemyInstance = Instantiate (deadEnemy1, transform.position, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+		} else { 
+			GameObject deadEnemyInstance = Instantiate (deadEnemy2, transform.position, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+		}
 		// Set dead to true.
 		dead = true;
+		gameObject.tag = "deadenemy";
 
 	}
 

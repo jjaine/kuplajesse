@@ -103,7 +103,7 @@ GameObject:
   - 61: {fileID: 5251732}
   - 114: {fileID: 5251731}
   m_Layer: 9
-  m_Name: enemy (2)
+  m_Name: blob2
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,9 @@ MonoBehaviour:
   speed: 2
   HP: 1
   player: {fileID: 267012906}
+  bubble: {fileID: 1000013345082380, guid: ffa4b29aa1b3d4c5aa2594bee2f3ac75, type: 2}
+  deadEnemy1: {fileID: 1000010319552492, guid: 5c9e0787014c74b86a68a8876bc3bbba, type: 2}
+  deadEnemy2: {fileID: 1000013531842230, guid: 1d42fcf8d780c411ab565265a5e95a1f, type: 2}
   grounded: 1
 --- !u!61 &5251732
 BoxCollider2D:
@@ -1195,7 +1198,7 @@ GameObject:
   - 61: {fileID: 403977462}
   - 114: {fileID: 403977461}
   m_Layer: 9
-  m_Name: enemy (1)
+  m_Name: dino
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,6 +1218,9 @@ MonoBehaviour:
   speed: 2
   HP: 1
   player: {fileID: 267012906}
+  bubble: {fileID: 1000013345082380, guid: ffa4b29aa1b3d4c5aa2594bee2f3ac75, type: 2}
+  deadEnemy1: {fileID: 1000010319552492, guid: 5c9e0787014c74b86a68a8876bc3bbba, type: 2}
+  deadEnemy2: {fileID: 1000013531842230, guid: 1d42fcf8d780c411ab565265a5e95a1f, type: 2}
   grounded: 1
 --- !u!61 &403977462
 BoxCollider2D:
@@ -2656,7 +2662,7 @@ GameObject:
   - 61: {fileID: 1665518255}
   - 114: {fileID: 1665518254}
   m_Layer: 9
-  m_Name: enemy
+  m_Name: blob
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2676,6 +2682,9 @@ MonoBehaviour:
   speed: 2
   HP: 1
   player: {fileID: 267012906}
+  bubble: {fileID: 1000013345082380, guid: ffa4b29aa1b3d4c5aa2594bee2f3ac75, type: 2}
+  deadEnemy1: {fileID: 1000010319552492, guid: 5c9e0787014c74b86a68a8876bc3bbba, type: 2}
+  deadEnemy2: {fileID: 1000013531842230, guid: 1d42fcf8d780c411ab565265a5e95a1f, type: 2}
   grounded: 1
 --- !u!61 &1665518255
 BoxCollider2D:

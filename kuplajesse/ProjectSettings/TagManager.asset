@@ -9,6 +9,8 @@ TagManager:
   - obstacle
   - enemy
   - bg
+  - bubble
+  - deadenemy
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Enemies
   - World
   - Background
-  - 
+  - Bubbles
   - 
   - 
   - 
@@ -57,4 +59,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 572380607
+    locked: 0
+  - name: Bubbles
+    uniqueID: 1983898499
     locked: 0

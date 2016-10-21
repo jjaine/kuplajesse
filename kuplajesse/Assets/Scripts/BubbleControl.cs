@@ -19,4 +19,18 @@ public class BubbleControl : MonoBehaviour {
 			rb.gravityScale = -8;
 		}
 	}
+	void FixedUpdate ()
+	{
+		Physics2D.IgnoreLayerCollision (12, 10, true);
+		Physics2D.IgnoreLayerCollision (12, 8, true);
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		Collider2D collider = col.collider;
+
+		if (collider.tag == "enemy") {
+			Destroy (gameObject);
+		}
+	}
 }
