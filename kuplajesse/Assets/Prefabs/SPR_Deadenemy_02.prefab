@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1000012482329414, guid: d9b9e1f3cf04d491287c9271468fec28, type: 2}
   audio: {fileID: 0}
+  candy: {fileID: 50000010699003934, guid: 3a1e3ab628d011147a19ec50a9cdd054, type: 2}
+  speed: 20
 --- !u!212 &212000014161072722
 SpriteRenderer:
   m_ObjectHideFlags: 1

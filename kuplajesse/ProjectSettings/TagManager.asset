@@ -12,6 +12,7 @@ TagManager:
   - bubble
   - deadenemy
   - nobubble
+  - candy
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Background
   - Bubbles
   - Deadenemies
-  - 
+  - Candies
   - 
   - 
   - 

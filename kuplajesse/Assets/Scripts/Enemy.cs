@@ -48,7 +48,8 @@ public class Enemy : MonoBehaviour
 	void FixedUpdate ()
 	{
 		Physics2D.IgnoreLayerCollision (9, 9, true);
-		Physics2D.IgnoreLayerCollision (9, 10, GetComponent<Rigidbody2D> ().velocity.y > 0);
+        Physics2D.IgnoreLayerCollision (14, 9, true);
+        Physics2D.IgnoreLayerCollision (9, 10, GetComponent<Rigidbody2D> ().velocity.y > 0);
 
 
 			if (GetComponent<Rigidbody2D> ().position.y < -6)

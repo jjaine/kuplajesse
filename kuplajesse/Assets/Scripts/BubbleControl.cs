@@ -7,9 +7,12 @@ public class BubbleControl : MonoBehaviour {
 	public Rigidbody2D rb;
 	public AudioSource audio;
 	private SpriteRenderer ren;
+    public Rigidbody2D candy;
+    public float speed = 10f;
+    private int random;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		originalPosition = gameObject.transform.position;
 		rb = GetComponent<Rigidbody2D>();
 		audio = GetComponent<AudioSource>();
@@ -30,7 +33,8 @@ public class BubbleControl : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		Physics2D.IgnoreLayerCollision (12, 12, true);
-		Physics2D.IgnoreLayerCollision (12, 10, true);
+        Physics2D.IgnoreLayerCollision (13, 12, true);
+        Physics2D.IgnoreLayerCollision (12, 10, true);
 		Physics2D.IgnoreLayerCollision (12, 9, gameObject.tag == "nobubble");
 		Physics2D.IgnoreLayerCollision (12, 8, gameObject.tag == "bubble");
 	}
@@ -45,7 +49,11 @@ public class BubbleControl : MonoBehaviour {
 		}
 		if (collider.tag == "Player") {
 			StartCoroutine("PlayAudioAndDie");
-		}
+            Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
+            random = (int)Random.Range(0.0f, 1.9f);
+
+            bulletInstance.velocity = new Vector2(speed*random, 10);
+        }
 	}
 
 	public IEnumerator PlayAudioAndDie() {

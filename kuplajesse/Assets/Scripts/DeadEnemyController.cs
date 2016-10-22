@@ -6,9 +6,11 @@ public class DeadEnemyController : MonoBehaviour {
 	public GameObject player;
 	public AudioSource audio;
 	private SpriteRenderer ren;
+    public Rigidbody2D candy;
+    public float speed = 20f;
+    private int random;
 
-
-	void Awake () {
+    void Awake () {
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 1);
 		audio = GetComponent<AudioSource>();
 		ren = gameObject.GetComponent<SpriteRenderer> ();
@@ -29,7 +31,11 @@ public class DeadEnemyController : MonoBehaviour {
 		if (collider.tag == "Player") {
 			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>());
 			StartCoroutine("PlayAudioAndDie");
-		}
+            Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
+            bulletInstance.velocity = new Vector2(speed, 0);
+            random = (int)Random.Range(0.0f, 1.9f);
+            bulletInstance.velocity = new Vector2(speed * random, 10);
+        }
 	}
 	public IEnumerator PlayAudioAndDie() {
 		audio.Play();             //assuming it is selected on the audio

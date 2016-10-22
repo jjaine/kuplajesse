@@ -163,6 +163,8 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   audio: {fileID: 0}
+  candy: {fileID: 50000010699003934, guid: 3a1e3ab628d011147a19ec50a9cdd054, type: 2}
+  speed: 10
 --- !u!212 &212000011257999404
 SpriteRenderer:
   m_ObjectHideFlags: 1
