@@ -5,11 +5,15 @@ public class BubbleControl : MonoBehaviour {
 
 	public Vector3 originalPosition;
 	public Rigidbody2D rb;
+	public AudioSource audio;
+	private SpriteRenderer ren;
 
 	// Use this for initialization
 	void Start () {
 		originalPosition = gameObject.transform.position;
 		rb = GetComponent<Rigidbody2D>();
+		audio = GetComponent<AudioSource>();
+		ren = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -32,7 +36,7 @@ public class BubbleControl : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
-	{
+	{		
 		Collider2D collider = col.collider;
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="Player" && gameObject.tag == "nobubble");
 
@@ -40,7 +44,14 @@ public class BubbleControl : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		if (collider.tag == "Player") {
-			Destroy (gameObject);
+			StartCoroutine("PlayAudioAndDie");
 		}
+	}
+
+	public IEnumerator PlayAudioAndDie() {
+		audio.Play();             //assuming it is selected on the audio
+		ren.enabled = false;
+		yield return new WaitForSeconds(1.2f);        //not sure if this is called right but you get the point
+		Destroy(this.gameObject);
 	}
 }

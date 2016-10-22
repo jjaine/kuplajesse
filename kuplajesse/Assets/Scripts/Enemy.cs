@@ -83,9 +83,8 @@ public class Enemy : MonoBehaviour
 	void Death()
 	{
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), bubble.GetComponent<Collider2D>());
-		//gameObject.transform.position = new Vector3(0,0,0);
 
-		//change sprite to dead, later
+		//change sprite to dead
 		ren.enabled = true;
 		Destroy (gameObject);
 

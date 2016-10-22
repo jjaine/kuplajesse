@@ -19,10 +19,11 @@ public class playerControl : MonoBehaviour {
     public float maxSpeed = 3f;
 
 	public AudioSource audio;
+	public AudioSource audio2;
+
 
     // Use this for initialization
     void Start () {
-		audio = GetComponent<AudioSource>();
 		originalPosition = gameObject.transform.position;
 		killTimeRemaining = killTime;
 	}
@@ -92,6 +93,7 @@ public class playerControl : MonoBehaviour {
 		Collider2D collider = col.collider;
 
 		if (collider.tag == "enemy") { 
+			audio2.Play ();
 			killed = true;
 			gameObject.transform.position = originalPosition;
 		}
