@@ -163,7 +163,6 @@ MonoBehaviour:
   player: {fileID: 1000012482329414, guid: d9b9e1f3cf04d491287c9271468fec28, type: 2}
   audio: {fileID: 0}
   candy: {fileID: 50000013119950560, guid: f54ed36cb63cc2f478adc0ebe6099c0f, type: 2}
-  speed: 20
 --- !u!212 &212000012770149116
 SpriteRenderer:
   m_ObjectHideFlags: 1

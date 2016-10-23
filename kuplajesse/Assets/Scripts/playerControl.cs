@@ -4,7 +4,7 @@ using System.Collections;
 public class playerControl : MonoBehaviour {
 
     public bool jump = false;
-    public bool facing = true; // use later for setting the player character to correct direction
+    public bool facing = true; 
 	public Vector3 originalPosition;
 	public float GroundDistance;
 	public bool grounded = true;

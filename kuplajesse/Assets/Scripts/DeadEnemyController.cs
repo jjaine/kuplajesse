@@ -7,7 +7,6 @@ public class DeadEnemyController : MonoBehaviour {
 	public AudioSource audio;
 	private SpriteRenderer ren;
     public Rigidbody2D candy;
-    public float speed = 20f;
     private int random;
 
     void Awake () {
@@ -30,11 +29,16 @@ public class DeadEnemyController : MonoBehaviour {
 
 		if (collider.tag == "Player") {
 			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>());
+			float h = Input.GetAxis("Horizontal");
+				
+			Debug.Log ("r: " + (h > 0) + " loc: " + (col.transform.position.x < gameObject.GetComponent<Rigidbody2D> ().position.x));
+			if ((h > 0) && (col.transform.position.x < gameObject.GetComponent<Rigidbody2D> ().position.x))
+				random = 1;
+			else 
+				random = -1;
 			StartCoroutine("PlayAudioAndDie");
             Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
-            bulletInstance.velocity = new Vector2(speed, 0);
-            random = (int)Random.Range(0.0f, 1.9f);
-            bulletInstance.velocity = new Vector2(speed * random, 10);
+            bulletInstance.velocity = new Vector2(10 * random, 5);
         }
 	}
 	public IEnumerator PlayAudioAndDie() {

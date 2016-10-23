@@ -4,18 +4,42 @@ using System.Collections;
 public class ShootBubble : MonoBehaviour
 {
 	public Rigidbody2D bubble;				
-	public float speed = 20f;		
+	public float speed = 20f;	
+	public float shootTime = 1f;
+	float shootTimeRemaining;
+	bool shot = false;
 
 	private playerControl playerCtrl;	
 
-	void Awake() {
-		playerCtrl = transform.root.GetComponent<playerControl>();
+	void Start () {
+		shootTimeRemaining = shootTime;
 	}
 
+	void Awake() {
+		playerCtrl = transform.root.GetComponent<playerControl>();
+
+	}
+
+	void FixedUpdate() {
+		if (shot && shootTimeRemaining > 0)
+			shootTimeRemaining -= Time.deltaTime;
+		else {
+			shootTimeRemaining = shootTime;
+			shot = false;
+		}
+	}
 
 	void Update ()
 	{
-		if(Input.GetButtonDown("Fire1")) {
+		if (shot && shootTimeRemaining > 0)
+			shootTimeRemaining -= Time.deltaTime;
+		else {
+			shootTimeRemaining = shootTime;
+			shot = false;
+		}
+
+		if(!shot && Input.GetButtonDown("Fire1")) {
+			shot = true;
 			GetComponent<AudioSource>().Play();
 
 			if(playerCtrl.facing) {

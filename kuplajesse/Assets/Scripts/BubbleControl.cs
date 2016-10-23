@@ -10,6 +10,9 @@ public class BubbleControl : MonoBehaviour {
     public Rigidbody2D candy;
     public float speed = 10f;
     private int random;
+	private float r;
+	public float shootTime = 4f;
+	float shootTimeRemaining;
 
     // Use this for initialization
     void Start () {
@@ -17,16 +20,15 @@ public class BubbleControl : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		audio = GetComponent<AudioSource>();
 		ren = gameObject.GetComponent<SpriteRenderer> ();
+		r = Random.Range(-0.5f, 0.5f);
+		shootTimeRemaining = shootTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameObject.transform.position.x - originalPosition.x < -3f || gameObject.transform.position.x - originalPosition.x > 3f) {
+		if (gameObject.transform.position.x - originalPosition.x < -3.5f || gameObject.transform.position.x - originalPosition.x > 3.5f) {
 			rb.velocity = new Vector2 (0, 1);
 			gameObject.tag = "nobubble";
-		}
-		if (gameObject.transform.position.y > 6) {
-			Destroy (gameObject);
 		}
 			
 	}
@@ -37,6 +39,17 @@ public class BubbleControl : MonoBehaviour {
         Physics2D.IgnoreLayerCollision (12, 10, true);
 		Physics2D.IgnoreLayerCollision (12, 9, gameObject.tag == "nobubble");
 		Physics2D.IgnoreLayerCollision (12, 8, gameObject.tag == "bubble");
+
+
+		if (GetComponent<Rigidbody2D> ().position.y > (3.5f+r)){
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+
+			if (shootTimeRemaining > 0)
+				shootTimeRemaining -= Time.deltaTime;
+			else {
+				Destroy (gameObject);
+			}
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -49,10 +62,10 @@ public class BubbleControl : MonoBehaviour {
 		}
 		if (collider.tag == "Player") {
 			StartCoroutine("PlayAudioAndDie");
-            Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
-            random = (int)Random.Range(0.0f, 1.9f);
+            //Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
+            //random = (int)Random.Range(0.0f, 1.9f);
 
-            bulletInstance.velocity = new Vector2(speed*random, 10);
+            //bulletInstance.velocity = new Vector2(speed*random, 10);
         }
 	}
 
