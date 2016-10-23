@@ -20,7 +20,7 @@ public class BubbleControl : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		audio = GetComponent<AudioSource>();
 		ren = gameObject.GetComponent<SpriteRenderer> ();
-		r = Random.Range(-0.5f, 0.5f);
+		r = Random.Range(0f, 0.5f);
 		shootTimeRemaining = shootTime;
 	}
 	

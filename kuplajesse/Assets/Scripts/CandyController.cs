@@ -18,7 +18,8 @@ public class CandyController : MonoBehaviour {
 			GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
 		
 		Physics2D.IgnoreLayerCollision (14, 14, true);
-		Physics2D.IgnoreLayerCollision (14, 13, true);
+		Physics2D.IgnoreLayerCollision (14, 13, true);		
+		Physics2D.IgnoreLayerCollision (14, 12, true);
 
 		if(gameObject.GetComponent<ConstantForce2D> ().torque > 0)
 		gameObject.GetComponent<ConstantForce2D> ().torque -= 5;
