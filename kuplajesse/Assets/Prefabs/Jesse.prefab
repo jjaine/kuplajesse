@@ -40,6 +40,7 @@ GameObject:
   - 50: {fileID: 50000011620801444}
   - 61: {fileID: 61000010105014600}
   - 114: {fileID: 114000010396707240}
+  - 95: {fileID: 95000011220077174}
   m_Layer: 8
   m_Name: Jesse
   m_TagString: Player
@@ -179,6 +180,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95000011220077174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012482329414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ac94e88288c745c9aa808da5b805b57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000010396707240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,8 +218,8 @@ MonoBehaviour:
   jumpForce: 375
   moveForce: 30
   maxSpeed: 2
-  audio: {fileID: 82000013833352472, guid: 75b64ab0feca4413fa1d194d7ffea28d, type: 2}
-  audio2: {fileID: 82000011856140800, guid: a6fb17bd5dcdc4d2a8bf0d55545b5782, type: 2}
+  audio: {fileID: 0}
+  audio2: {fileID: 0}
 --- !u!114 &114000012294486684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble: {fileID: 50000013358673524, guid: ffa4b29aa1b3d4c5aa2594bee2f3ac75, type: 2}
   speed: 20
+  shootTime: 1
 --- !u!212 &212000014168879762
 SpriteRenderer:
   m_ObjectHideFlags: 1
