@@ -102,6 +102,7 @@ GameObject:
   - 50: {fileID: 5251733}
   - 61: {fileID: 5251732}
   - 114: {fileID: 5251731}
+  - 95: {fileID: 5251736}
   m_Layer: 9
   m_Name: blob2
   m_TagString: enemy
@@ -204,6 +205,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!95 &5251736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5251730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3b74e2eeefb54a5b84ba7ff48da6ac5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &29098480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1026,7 @@ GameObject:
   - 50: {fileID: 403977463}
   - 61: {fileID: 403977462}
   - 114: {fileID: 403977461}
+  - 95: {fileID: 403977466}
   m_Layer: 9
   m_Name: dino
   m_TagString: enemy
@@ -1110,6 +1129,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!95 &403977466
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403977460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b592b099b24d24d4e918228ceec24139, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &451375013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,6 +2646,7 @@ GameObject:
   - 50: {fileID: 1665518258}
   - 61: {fileID: 1665518255}
   - 114: {fileID: 1665518254}
+  - 95: {fileID: 1665518259}
   m_Layer: 9
   m_Name: blob
   m_TagString: enemy
@@ -2712,6 +2749,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1665518259
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665518253}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3b74e2eeefb54a5b84ba7ff48da6ac5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1679671744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,7 +3326,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2114552201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.199, z: 0}
+  m_LocalPosition: {x: -0.14, y: -0.199, z: 0}
   m_LocalScale: {x: 0.9, y: 0.96093786, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
