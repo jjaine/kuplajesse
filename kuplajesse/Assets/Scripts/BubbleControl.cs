@@ -30,15 +30,20 @@ public class BubbleControl : MonoBehaviour {
 			rb.velocity = new Vector2 (0, 1);
 			gameObject.tag = "nobubble";
 		}
+		if (gameObject.transform.position.x < -8.5f || gameObject.transform.position.x > 8.5f) {
+			rb.velocity = new Vector2 (0, 1);
+			gameObject.tag = "nobubble";
+		}
 			
 	}
 	void FixedUpdate ()
 	{
 		Physics2D.IgnoreLayerCollision (12, 12, true);
-        Physics2D.IgnoreLayerCollision (13, 12, true);
+		Physics2D.IgnoreLayerCollision (13, 12, true);
+		Physics2D.IgnoreLayerCollision (12, 10, true);
+
 		Physics2D.IgnoreLayerCollision (12, 9, gameObject.tag == "nobubble");
 		Physics2D.IgnoreLayerCollision (12, 8, gameObject.tag == "bubble");
-
 
 		if (GetComponent<Rigidbody2D> ().position.y > (3.5f+r)){
 			if (GetComponent<Rigidbody2D> ().position.x < -0.2f+r) {
@@ -62,12 +67,12 @@ public class BubbleControl : MonoBehaviour {
 	{		
 		Collider2D collider = col.collider;
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="Player" && gameObject.tag == "nobubble");
-		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="platform");
+		//Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="platform");
 
-		if (collider.tag == "obstacle") {
-			gameObject.tag = "nobubble";
-			rb.velocity = new Vector2 (0, 1);
-		}
+		//if (collider.tag == "obstacle") {
+		//	gameObject.tag = "nobubble";
+		//	rb.velocity = new Vector2 (0, 1);
+		//}
 
 		if (collider.tag == "enemy" && gameObject.tag == "bubble") {
 			Destroy (gameObject);
