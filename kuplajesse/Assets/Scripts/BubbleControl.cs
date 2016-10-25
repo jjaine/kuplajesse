@@ -36,18 +36,24 @@ public class BubbleControl : MonoBehaviour {
 	{
 		Physics2D.IgnoreLayerCollision (12, 12, true);
         Physics2D.IgnoreLayerCollision (13, 12, true);
-        Physics2D.IgnoreLayerCollision (12, 10, true);
 		Physics2D.IgnoreLayerCollision (12, 9, gameObject.tag == "nobubble");
 		Physics2D.IgnoreLayerCollision (12, 8, gameObject.tag == "bubble");
 
 
 		if (GetComponent<Rigidbody2D> ().position.y > (3.5f+r)){
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-
-			if (shootTimeRemaining > 0)
-				shootTimeRemaining -= Time.deltaTime;
+			if (GetComponent<Rigidbody2D> ().position.x < -0.2f+r) {
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (1, 0);
+			} else if (GetComponent<Rigidbody2D> ().position.x > 0.2f+r){
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-1, 0);
+			}
 			else {
-				Destroy (gameObject);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+
+				if (shootTimeRemaining > 0)
+					shootTimeRemaining -= Time.deltaTime;
+				else {
+					Destroy (gameObject);
+				}
 			}
 		}
 	}
@@ -56,16 +62,19 @@ public class BubbleControl : MonoBehaviour {
 	{		
 		Collider2D collider = col.collider;
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="Player" && gameObject.tag == "nobubble");
+		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="platform");
+
+		if (collider.tag == "obstacle") {
+			gameObject.tag = "nobubble";
+			rb.velocity = new Vector2 (0, 1);
+		}
 
 		if (collider.tag == "enemy" && gameObject.tag == "bubble") {
 			Destroy (gameObject);
 		}
 		if (collider.tag == "Player") {
+			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>());
 			StartCoroutine("PlayAudioAndDie");
-            //Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
-            //random = (int)Random.Range(0.0f, 1.9f);
-
-            //bulletInstance.velocity = new Vector2(speed*random, 10);
         }
 	}
 

@@ -36,6 +36,8 @@ public class DeadEnemyController : MonoBehaviour {
 				random = 1;
 			else 
 				random = -1;
+			
+			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>());
 			StartCoroutine("PlayAudioAndDie");
             Rigidbody2D bulletInstance = Instantiate(candy, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(10 * random, 5);
