@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000013754185676}
   - 58: {fileID: 58000010748218908}
   - 82: {fileID: 82000010393247596}
+  - 95: {fileID: 95000011168135274}
   m_Layer: 12
   m_Name: SPR_Bubble
   m_TagString: bubble
@@ -149,6 +150,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95000011168135274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013345082380}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 205e41e6c936f47e1bc16409368e31cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000013754185676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +183,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   candy: {fileID: 50000010699003934, guid: 3a1e3ab628d011147a19ec50a9cdd054, type: 2}
   speed: 10
+  shootTime: 4
 --- !u!212 &212000011257999404
 SpriteRenderer:
   m_ObjectHideFlags: 1

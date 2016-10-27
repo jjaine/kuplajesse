@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 3468aed4891ee4888a92208e055b8768
-timeCreated: 1477567630
+timeCreated: 1477571188
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: ANIM_BubbleBurst_0
+    21300002: ANIM_BubbleBurst_1
+    21300004: ANIM_BubbleBurst_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ANIM_BubbleBurst_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 145.66667
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ANIM_BubbleBurst_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 145.66667
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ANIM_BubbleBurst_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 145.66667
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

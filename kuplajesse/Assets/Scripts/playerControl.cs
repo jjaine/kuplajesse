@@ -38,8 +38,6 @@ public class playerControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float h = Input.GetAxis("Horizontal");
-
 		if (grounded && Input.GetButtonDown ("Jump")) {
 			audio.Play ();
 			anim.SetBool ("Jump", true);
@@ -58,8 +56,7 @@ public class playerControl : MonoBehaviour {
 			anim.SetBool ("Grounded", true);
 			anim.SetBool ("Jump", false);
 		}
-
-		
+			
 		if (killed && killTimeRemaining > 0)
 			killTimeRemaining -= Time.deltaTime;
 		else {

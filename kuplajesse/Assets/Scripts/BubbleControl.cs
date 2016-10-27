@@ -13,6 +13,8 @@ public class BubbleControl : MonoBehaviour {
 	private float r;
 	public float shootTime = 4f;
 	float shootTimeRemaining;
+	private Animator anim;				
+
 
     // Use this for initialization
     void Start () {
@@ -22,6 +24,8 @@ public class BubbleControl : MonoBehaviour {
 		ren = gameObject.GetComponent<SpriteRenderer> ();
 		r = Random.Range(0f, 0.5f);
 		shootTimeRemaining = shootTime;
+		anim = GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
@@ -45,6 +49,7 @@ public class BubbleControl : MonoBehaviour {
 		Physics2D.IgnoreLayerCollision (12, 9, gameObject.tag == "nobubble");
 		Physics2D.IgnoreLayerCollision (12, 8, gameObject.tag == "bubble");
 
+
 		if (GetComponent<Rigidbody2D> ().position.y > (3.5f+r)){
 			if (GetComponent<Rigidbody2D> ().position.x < -0.2f+r) {
 				GetComponent<Rigidbody2D> ().velocity = new Vector2 (1, 0);
@@ -65,6 +70,7 @@ public class BubbleControl : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{		
+
 		Collider2D collider = col.collider;
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="Player" && gameObject.tag == "nobubble");
 
@@ -73,12 +79,14 @@ public class BubbleControl : MonoBehaviour {
 		}
 		if (collider.tag == "Player") {
 			Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>());
+
 			StartCoroutine("PlayAudioAndDie");
         }
 	}
 
 	public IEnumerator PlayAudioAndDie() {
 		audio.Play();             //assuming it is selected on the audio
+
 		ren.enabled = false;
 		yield return new WaitForSeconds(1.2f);        //not sure if this is called right but you get the point
 		Destroy(this.gameObject);
