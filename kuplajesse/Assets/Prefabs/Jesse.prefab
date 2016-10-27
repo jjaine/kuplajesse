@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: 0
+  fall: 0
   facing: 1
   originalPosition: {x: 0, y: 0, z: 0}
   GroundDistance: 0

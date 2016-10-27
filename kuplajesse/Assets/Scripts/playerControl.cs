@@ -4,6 +4,7 @@ using System.Collections;
 public class playerControl : MonoBehaviour {
 
     public bool jump = false;
+	public bool fall = false;
     public bool facing = true; 
 	public Vector3 originalPosition;
 	public float GroundDistance;
@@ -11,6 +12,7 @@ public class playerControl : MonoBehaviour {
 	public bool killed = false;
 	public float killTime = 3f;
 	float killTimeRemaining;
+	private SpriteRenderer ren;
 
 
     //forces for moving
@@ -21,20 +23,40 @@ public class playerControl : MonoBehaviour {
 	public AudioSource audio;
 	public AudioSource audio2;
 
+	private Animator anim;				
+
+	
 
     // Use this for initialization
     void Start () {
 		originalPosition = gameObject.transform.position;
 		killTimeRemaining = killTime;
+		ren = gameObject.GetComponent<SpriteRenderer> ();
+		anim = GetComponent<Animator>();
+
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (grounded && Input.GetButtonDown ("Jump")) {
 			audio.Play ();
+			anim.SetBool ("Jump", true);
+			anim.SetBool ("Grounded", false);
+
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, jumpForce));
 			grounded = false;
-		}    
+		}
+		anim.SetFloat ("Velocity", GetComponent<Rigidbody2D> ().velocity.y);
+
+		if (GetComponent<Rigidbody2D> ().velocity.y < 0) {
+			anim.SetBool ("Jump", false);
+		}
+		if (grounded) {
+			anim.SetBool ("Grounded", true);
+			anim.SetBool ("Jump", false);
+		}
+
+		
 		if (killed && killTimeRemaining > 0)
 			killTimeRemaining -= Time.deltaTime;
 		else {
@@ -53,7 +75,7 @@ public class playerControl : MonoBehaviour {
             GetComponent<Rigidbody2D>().gameObject.transform.position = new Vector2(GetComponent<Rigidbody2D>().position.x, 6);
 
         float h = Input.GetAxis("Horizontal");
-
+		anim.SetFloat("Speed", Mathf.Abs(h));
 
 		if (h * GetComponent<Rigidbody2D> ().velocity.x < maxSpeed){
 			if (GetComponent<Rigidbody2D> ().velocity.y == 0)
@@ -88,9 +110,10 @@ public class playerControl : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if(GetComponent<Rigidbody2D>().velocity.y == 0)
-			grounded = true;
 		Collider2D collider = col.collider;
+
+		if(GetComponent<Rigidbody2D>().velocity.y == 0 && (collider.tag == "platform" || collider .tag == "ground"))
+			grounded = true;
 
 		if (collider.tag == "enemy") { 
 			audio2.Play ();

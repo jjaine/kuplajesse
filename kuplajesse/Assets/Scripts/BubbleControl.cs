@@ -67,12 +67,6 @@ public class BubbleControl : MonoBehaviour {
 	{		
 		Collider2D collider = col.collider;
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="Player" && gameObject.tag == "nobubble");
-		//Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collider.GetComponent<Collider2D>(), collider.tag=="platform");
-
-		//if (collider.tag == "obstacle") {
-		//	gameObject.tag = "nobubble";
-		//	rb.velocity = new Vector2 (0, 1);
-		//}
 
 		if (collider.tag == "enemy" && gameObject.tag == "bubble") {
 			Destroy (gameObject);
