@@ -46,7 +46,7 @@ public class DeadEnemyController : MonoBehaviour {
 	public IEnumerator PlayAudioAndDie() {
 		audio.Play();             //assuming it is selected on the audio
 		ren.enabled = false;
-		yield return new WaitForSeconds(1.2f);        //not sure if this is called right but you get the point
+		yield return new WaitForSeconds(1.2f);
 		Destroy(this.gameObject);
 	}
 }

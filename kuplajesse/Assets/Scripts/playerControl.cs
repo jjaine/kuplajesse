@@ -14,7 +14,6 @@ public class playerControl : MonoBehaviour {
 	float killTimeRemaining;
 	private SpriteRenderer ren;
 
-
     //forces for moving
     public float jumpForce = 500f;
     public float moveForce = 200f;
@@ -22,10 +21,7 @@ public class playerControl : MonoBehaviour {
 
 	public AudioSource audio;
 	public AudioSource audio2;
-
-	private Animator anim;				
-
-	
+	public Animator anim;				
 
     // Use this for initialization
     void Start () {
@@ -33,7 +29,6 @@ public class playerControl : MonoBehaviour {
 		killTimeRemaining = killTime;
 		ren = gameObject.GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator>();
-
 	}
 
 	// Update is called once per frame
@@ -57,8 +52,9 @@ public class playerControl : MonoBehaviour {
 			anim.SetBool ("Jump", false);
 		}
 			
-		if (killed && killTimeRemaining > 0)
+		if (killed && killTimeRemaining > 0) {
 			killTimeRemaining -= Time.deltaTime;
+		}
 		else {
 			killTimeRemaining = killTime;
 			killed = false;
@@ -77,21 +73,15 @@ public class playerControl : MonoBehaviour {
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
 		if (h * GetComponent<Rigidbody2D> ().velocity.x < maxSpeed){
-			//if (GetComponent<Rigidbody2D> ().velocity.y == 0)
 				GetComponent<Rigidbody2D> ().AddForce (Vector2.right * h * moveForce);
-			//else
-			//	GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D> ().velocity.y);
 			}
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) >= maxSpeed)
-			//if (GetComponent<Rigidbody2D> ().velocity.y == 0)
             	GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         if (h > 0 && !facing) 
             Flip();
         else if (h < 0 && facing) 
             Flip();
-
-
     }
 
     void Flip()
@@ -106,7 +96,6 @@ public class playerControl : MonoBehaviour {
     }
 
 	//kill player on enemy contact, check if grounded 
-
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		Collider2D collider = col.collider;
@@ -117,9 +106,18 @@ public class playerControl : MonoBehaviour {
 		if (collider.tag == "enemy") { 
 			audio2.Play ();
 			killed = true;
-			gameObject.transform.position = originalPosition;
+			anim.SetBool ("Die", true);
+
+			StartCoroutine("AnimationFirst");
+
 		}
 	}
 
+	public IEnumerator AnimationFirst() {
+		yield return new WaitForSeconds(0.6f);
 
+		gameObject.transform.position = originalPosition;
+		anim.SetBool ("Die", false);
+
+	}
 }
