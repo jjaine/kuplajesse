@@ -84,7 +84,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5833ec9644cfd4c1e84746d9f78d1a95, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 05a2a39e361c0434ea015ee1a6749ce2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -163,7 +163,6 @@ MonoBehaviour:
   player: {fileID: 1000012482329414, guid: d9b9e1f3cf04d491287c9271468fec28, type: 2}
   audio: {fileID: 0}
   candy: {fileID: 50000010699003934, guid: 3a1e3ab628d011147a19ec50a9cdd054, type: 2}
-  speed: 20
 --- !u!212 &212000014161072722
 SpriteRenderer:
   m_ObjectHideFlags: 1
