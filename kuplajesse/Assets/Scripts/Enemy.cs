@@ -17,11 +17,16 @@ public class Enemy : MonoBehaviour
 	private bool flip = false;
 	private bool collide = false;
 	private int random;
+	//private playerControl player;	
+
 
 
 	void Awake()
 	{
 		ren = gameObject.GetComponent<SpriteRenderer> ();
+		//player = transform.root.GetComponent<playerControl>();
+
+		player = GameObject.FindWithTag ("Player");
 //		front = transform.Find("frontCheck").transform;
 		Physics2D.IgnoreCollision(bubble.GetComponent<Collider2D>(), GetComponent<Collider2D>(), bubble.tag=="nobubble");
 		random = (int)Random.Range(0.0f, 1.9f);
