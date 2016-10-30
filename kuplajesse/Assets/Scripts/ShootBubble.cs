@@ -47,8 +47,6 @@ public class ShootBubble : MonoBehaviour
 			GetComponent<AudioSource>().Play();
 
 			StartCoroutine("AnimationFirst");
-
-
 		}
 	}
 	public IEnumerator AnimationFirst() {

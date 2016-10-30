@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class playerControl : MonoBehaviour {
@@ -21,7 +22,11 @@ public class playerControl : MonoBehaviour {
 
 	public AudioSource audio;
 	public AudioSource audio2;
-	public Animator anim;				
+	public Animator anim;		
+	public Text countText;
+	private int count;
+	public Text livesText;
+	private int lives;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +34,10 @@ public class playerControl : MonoBehaviour {
 		killTimeRemaining = killTime;
 		ren = gameObject.GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator>();
+		count = 0;
+		countText.text = "Score: " + count.ToString ();
+		lives = 2;
+		livesText.text = lives.ToString ();
 	}
 
 	// Update is called once per frame
@@ -107,14 +116,30 @@ public class playerControl : MonoBehaviour {
 			audio2.Play ();
 			killed = true;
 			anim.SetBool ("Die", true);
+			if(lives > 0)
+			lives -= 1;
+			livesText.text = lives.ToString ();
 
 			StartCoroutine("AnimationFirst");
 
 		}
+		Debug.Log (collider.tag);
+		if (collider.tag == "candy" || collider.tag == "deadenemy")
+		{
+			count = count + 1000;
+			Debug.Log (count);
+
+			countText.text = "Score: " + count.ToString ();
+		}
+		if (collider.tag == "nobubble")
+		{
+			count = count + 10;
+			countText.text = "Score: " + count.ToString ();
+		}
 	}
 
 	public IEnumerator AnimationFirst() {
-		yield return new WaitForSeconds(0.6f);
+		yield return new WaitForSeconds(0.5f);
 
 		gameObject.transform.position = originalPosition;
 		anim.SetBool ("Die", false);

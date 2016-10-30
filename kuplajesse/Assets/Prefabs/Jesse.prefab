@@ -221,6 +221,9 @@ MonoBehaviour:
   maxSpeed: 2
   audio: {fileID: 0}
   audio2: {fileID: 0}
+  anim: {fileID: 0}
+  countText: {fileID: 0}
+  livesText: {fileID: 0}
 --- !u!114 &114000012294486684
 MonoBehaviour:
   m_ObjectHideFlags: 1
