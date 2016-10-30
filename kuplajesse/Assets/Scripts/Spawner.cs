@@ -26,6 +26,5 @@ public class Spawner : MonoBehaviour
 			enemyScale.x *= -1;
 			enemy.transform.localScale = enemyScale;
 		}
-
 	}
 }

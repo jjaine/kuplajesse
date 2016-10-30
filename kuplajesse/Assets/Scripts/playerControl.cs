@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class playerControl : MonoBehaviour {
 
@@ -27,6 +28,8 @@ public class playerControl : MonoBehaviour {
 	private int count;
 	public Text livesText;
 	private int lives;
+	public Text gameOverText;
+
 
     // Use this for initialization
     void Start () {
@@ -116,19 +119,20 @@ public class playerControl : MonoBehaviour {
 			audio2.Play ();
 			killed = true;
 			anim.SetBool ("Die", true);
-			if(lives > 0)
-			lives -= 1;
+			if (lives > 0)
+				lives -= 1;
+			else {
+				StartCoroutine("GameOver");
+			}
+			
 			livesText.text = lives.ToString ();
 
 			StartCoroutine("AnimationFirst");
 
 		}
-		Debug.Log (collider.tag);
 		if (collider.tag == "candy" || collider.tag == "deadenemy")
 		{
 			count = count + 1000;
-			Debug.Log (count);
-
 			countText.text = "Score: " + count.ToString ();
 		}
 		if (collider.tag == "nobubble")
@@ -143,6 +147,15 @@ public class playerControl : MonoBehaviour {
 
 		gameObject.transform.position = originalPosition;
 		anim.SetBool ("Die", false);
+
+	}
+
+	public IEnumerator GameOver() {
+		gameOverText.text = "Game Over";
+
+		yield return new WaitForSeconds(5f);
+		SceneManager.LoadScene ("Scenes/start", LoadSceneMode.Single);
+
 
 	}
 }
