@@ -1,0 +1,5 @@
+todo:
+-spawn candy
+-enemys escape bubbles
+-fix bugs: 
+	*bubble burst
