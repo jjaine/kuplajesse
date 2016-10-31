@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0d554ce498b214e04b4f2d3eeb3cd6e2
-timeCreated: 1477397129
+timeCreated: 1477909649
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,10 +60,10 @@ TextureImporter:
       name: ANIM_Enemy01_walk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 124.25
-        height: 163
+        x: 17
+        y: 17
+        width: 104
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -73,10 +73,10 @@ TextureImporter:
       name: ANIM_Enemy01_walk_1
       rect:
         serializedVersion: 2
-        x: 124
-        y: 0
-        width: 124.25
-        height: 163
+        x: 132
+        y: 18
+        width: 103
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -86,10 +86,10 @@ TextureImporter:
       name: ANIM_Enemy01_walk_2
       rect:
         serializedVersion: 2
-        x: 248
-        y: 0
-        width: 124.25
-        height: 163
+        x: 259
+        y: 17
+        width: 104
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,10 +99,10 @@ TextureImporter:
       name: ANIM_Enemy01_walk_3
       rect:
         serializedVersion: 2
-        x: 372
-        y: 0
-        width: 124.25
-        height: 163
+        x: 377
+        y: 20
+        width: 104
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
