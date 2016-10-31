@@ -578,7 +578,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 532d2aa5cea6448739855e98b40512eb, type: 3}
-    m_FontSize: 37
+    m_FontSize: 32
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 3
@@ -2164,6 +2164,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 0.4922802
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010396707240, guid: d9b9e1f3cf04d491287c9271468fec28,
+        type: 2}
+      propertyPath: jumpForce
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9b9e1f3cf04d491287c9271468fec28, type: 2}

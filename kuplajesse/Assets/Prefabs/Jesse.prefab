@@ -216,7 +216,7 @@ MonoBehaviour:
   grounded: 1
   killed: 0
   killTime: 3
-  jumpForce: 375
+  jumpForce: 700
   moveForce: 30
   maxSpeed: 2
   audio: {fileID: 0}
@@ -224,6 +224,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   countText: {fileID: 0}
   livesText: {fileID: 0}
+  gameOverText: {fileID: 0}
 --- !u!114 &114000012294486684
 MonoBehaviour:
   m_ObjectHideFlags: 1

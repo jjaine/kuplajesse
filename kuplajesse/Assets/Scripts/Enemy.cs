@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
 			if (!dead && grounded && GetComponent<Rigidbody2D> ().position.y < player.transform.position.y &&
 			   (GetComponent<Rigidbody2D> ().position.x - player.transform.position.x < 0.05f && GetComponent<Rigidbody2D> ().position.x - player.transform.position.x > -0.05f)) {
-				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, 375f));
+				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0f, 700f));
 				grounded = false;
 			}
 		
