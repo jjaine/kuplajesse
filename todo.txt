@@ -1,5 +1,7 @@
 todo:
--spawn candy
+-spawn candy?
+-start screen
+-change character collider to a circle
 -enemys escape bubbles
 -fix bugs: 
 	*bubble burst
