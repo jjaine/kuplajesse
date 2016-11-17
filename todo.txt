@@ -1,6 +1,7 @@
 todo:
+-poster for demo day?
 -spawn candy?
--start screen
+-add start screen
 -change character collider to a circle
 -enemys escape bubbles
 -fix bugs: 
