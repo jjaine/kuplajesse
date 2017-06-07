@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 	{
 		// Instantiate a random enemy.
 		int enemyIndex = Random.Range(0, enemies.Length);
-		Rigidbody2D enemy = Instantiate(enemies[enemyIndex], transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
+		GameObject enemy = Instantiate(enemies[enemyIndex], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 		random = (int)Random.Range(0.0f, 2.0f);
 		if (random == 1) {
 			Vector3 enemyScale = enemy.transform.localScale;

@@ -6,14 +6,14 @@ public class BubbleControl : MonoBehaviour {
 	public Vector3 originalPosition;
 	public Rigidbody2D rb;
 	public AudioSource audio;
-	private SpriteRenderer ren;
+	SpriteRenderer ren;
     public Rigidbody2D candy;
     public float speed = 10f;
-    private int random;
-	private float r;
+    int random;
+	float r;
 	public float shootTime = 4f;
 	float shootTimeRemaining;
-	private Animator anim;				
+	Animator anim;				
 
 
     // Use this for initialization
