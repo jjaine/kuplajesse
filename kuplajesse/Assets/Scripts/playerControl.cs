@@ -40,7 +40,7 @@ public class playerControl : MonoBehaviour {
 		count = 0;
 		countText.text = "Score: " + count.ToString ();
 		lives = 2;
-		livesText.text = lives.ToString ();
+		livesText.text = "Lives: " + lives.ToString ();
 	}
 
 	// Update is called once per frame
@@ -125,7 +125,7 @@ public class playerControl : MonoBehaviour {
 				StartCoroutine("GameOver");
 			}
 			
-			livesText.text = lives.ToString ();
+			livesText.text = "Lives: "+lives.ToString ();
 
 			StartCoroutine("AnimationFirst");
 
